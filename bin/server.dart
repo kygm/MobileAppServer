@@ -2,6 +2,8 @@
 
 import 'package:mongo_dart/mongo_dart.dart';
 import 'package:sevr/sevr.dart';
+import 'dart:io' show Platform;
+
 
 void start() async {
   //log into db
@@ -13,7 +15,7 @@ void start() async {
   final transactions = db.collection('transactions');
   //print(await clients.find().toList());
 
-  const port = 1600;
+  const port = Platform.enviornment ?? 1600;
   final app = Sevr();
 
   final corsPaths = ['/', '/:id'];
